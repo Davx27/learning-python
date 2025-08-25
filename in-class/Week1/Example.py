@@ -1,4 +1,4 @@
-# Variables y tipos
+ # Variables y tipos
 nombre = "David"
 edad = 17
 altura = 1.65
@@ -21,7 +21,7 @@ frutas = {"manzana", "pera", "uva"}
 if persona["edad"] >= 18:
     print(f"{persona['nombre']} es mayor de edad.")
 elif persona["edad"] >= 13:
-    print(f"{persona['nombre']} es adolescente.")
+    print(f"{persona['nombre']} es adolescente.") 
 else:
     print(f"{persona['nombre']} es menor de edad.")
 

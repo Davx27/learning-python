@@ -28,63 +28,102 @@ while play:
     
     #option 1 programa de sumas
     
-    if option == 1: 
-
-        print("\n           PROGRAMA DE SUMA\n")
-        print("\n           A continucaion ingresa dos valores para sumar\n")
-        num1  = float(input("\n           Primer valor: \n"))
-        num2  = float(input("\n           Segundo valor: \n"))
-        result1 = num1 + num2 
-        print("Tu resultado es: ", result1)
+    match option:
         
-        action1 = (input("\n           ¿Deseas hacer otra suma? (SI/NO): ")).lower()
-        if action1 != "si":
-            print("\n           Volviendo al menu...\n")                
-            
-            
-        elif action1 == "si":
-            print("\n           OK\n")
-            
-        else:
-            print("\n           ¡¡¡Intente de nuevo!!!")
-            
+        case 1:
+            exit_sum = True
+            while exit_sum: #Proceso de suma
+                print("\n           PROGRAMA DE SUMA\n")
+                print("\n           A continucaion ingresa dos valores para sumar\n")
+                num1  = float(input("\n           Primer valor: \n"))
+                num2  = float(input("\n           Segundo valor: \n"))
+                result1 = num1 + num2 
+                print("Tu resultado es: ", result1)
+                    
+                while True: #Bucle para reiniciar la suma  
+                    action1 = (input("\n           ¿Deseas hacer otra suma? (SI/NO): ")).lower()
+                    if action1 == "si":
+                        print("\n           OK\n")
+                        break
+                    elif action1 == "no":
+                        print("\n           Volviendo al menu...\n")
+                        exit_sum = False #Salir del bucle del programa de suma
+                        break
+                    else:
+                        print("         Intente de nuevo!!\n")
+
             
     #opcion 2 programa de promedio de notas  
             
-    elif option == 2:
-        
-        print("\n           PROGRAMA DE NOTA\n")
-        notas = []
-        while True:         #Bucle para definir las notas a promediar del usuario
-            noteLength = (int(input("¿Cuantas notas deseas promediar?: ")))
+        case 2:
             
-            if 1 < noteLength <= 25:
-                break
+            print("\n           PROGRAMA DE NOTA\n")
+            notas = []
+            while True:         #Bucle para definir las notas a promediar del usuario
+                noteLength = (int(input("¿Cuantas notas deseas promediar?: ")))
+                
+                if 1 < noteLength <= 25:
+                    break
+                else:
+                    print("\n           Ingrese un valor entre 2 y 25 ")
+                
+            for i in range (noteLength):            #Bucle para definir el promedio de las notas del usuario
+                    nota = float(input(f"Ingrese la nota {i+1}: "))
+                    notas.append(nota)
+                
+            result2 = mediaDeNotas(notas)
+            print(f"\n           Tu resultado es {result2}: ")
+            
+            accion2 = (input("\n             ¿Deseas promedias mas notas? (SI/NO):")).lower()
+            if accion2 != "si":
+                print("\n           Volviendo al menu...\n")
+            
             else:
-                print("\n           Ingrese un valor entre 2 y 25 ")
+                print("\n           ¡¡¡Intente de nuevo!!!")
+                
+                
+        case 3:
+            saldo = 0
+            monto = 0
             
-        for i in range (noteLength):            #Bucle para definir el promedio de las notas del usuario
-                nota = float(input(f"Ingrese la nota {i+1}: "))
-                notas.append(nota)
+            print("""
+                  _______________________________________________________
+                  |                                                     |
+                  |  ---PROGRAMA DE RETIRO DE CAJERO AUTOMATICO---      |
+                  |                                                     |       
+                  | 1.Ver mi saldo                                      |
+                  |                                                     |
+                  | 2.Realizar una consignacion                         |
+                  |                                                     |
+                  | 3.Retirar dinero                                    |
+                  |                                                     |
+                  | 4.Denunciar robo                                    |
+                  |                                                     |    
+                  |_____________________________________________________|""") 
             
-        result2 = mediaDeNotas(notas)
-        print(f"\n           Tu resultado es {result2}: ")
-        
-        accion2 = (input("\n             ¿Deseas promedias mas notas? (SI/NO):")).lower()
-        if accion2 != "si":
-            print("\n           Volviendo al menu...\n")
-        
-        else:
-            print("\n           ¡¡¡Intente de nuevo!!!")
+            opcion = int(input("            Seleccione una opcion: \n"))
             
+            match opcion:
+                
+                case 1:
+                    print(f"""
+                  _______________________________________________________
+                  |                                                     |
+                  |             ---SALDO DISPONIBLE---                  |
+                  |                                                     |       
+                  | Actualmente cuentas con un saldo                    |
+                  | disponible de...                                    |
+                  |                                                     |
+                  |                     {saldo}                         |
+                  |                                                     |    
+                  |_____________________________________________________|""")
+                    
+                    
+                
+        case 5:
+            print("\n           Vuelva pronto...\n")
+            break
             
-    elif option == 3:
-        print("\n           PROGRAMA DE RETIRO DE CAJERO AUTOMATICO\n ")
-        
-        
-    elif option == 5:
-        print("\n           Vuelva pronto...\n")
-        play = False
 
         
 
