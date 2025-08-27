@@ -41,11 +41,11 @@ while play:
                 print("Tu resultado es: ", result1)
                     
                 while True: #Bucle para reiniciar la suma  
-                    action1 = (input("\n           ¿Deseas hacer otra suma? (SI/NO): ")).lower()
-                    if action1 == "si":
+                    action = (input("\n           ¿Deseas hacer otra suma? (SI/NO): ")).lower()
+                    if action == "si":
                         print("\n           OK\n")
                         break
-                    elif action1 == "no":
+                    elif action == "no":
                         print("\n           Volviendo al menu...\n")
                         exit_sum = False #Salir del bucle del programa de suma
                         break
@@ -74,8 +74,8 @@ while play:
             result2 = mediaDeNotas(notas)
             print(f"\n           Tu resultado es {result2}: ")
             
-            accion2 = (input("\n             ¿Deseas promedias mas notas? (SI/NO):")).lower()
-            if accion2 != "si":
+            action2 = (input("\n             ¿Deseas promedias mas notas? (SI/NO):")).lower()
+            if action2 != "si":
                 print("\n           Volviendo al menu...\n")
             
             else:
@@ -99,7 +99,8 @@ while play:
                   |                                                     |
                   | 4.Denunciar robo                                    |
                   |                                                     |    
-                  |_____________________________________________________|""") 
+                  |_____________________________________________________|
+                  """) 
             
             opcion = int(input("            Seleccione una opcion: \n"))
             
@@ -114,11 +115,22 @@ while play:
                   | Actualmente cuentas con un saldo                    |
                   | disponible de...                                    |
                   |                                                     |
-                  |                     {saldo}                         |
+                                        {saldo} pesos                         
+                  |                                                     |    
+                  |_____________________________________________________|
+                  """)             
+                case 2:
+                    DinnerAdd = int(input("""
+                  _______________________________________________________
+                  |                                                     |
+                  |                            |
+                  |  ¿Cuanto deseas consignar?                                                   |       
+                  |                                                  |""")) 
+                    print("""                                     |
+                  |                                                     |
+                                                         
                   |                                                     |    
                   |_____________________________________________________|""")
-                    
-                    
                 
         case 5:
             print("\n           Vuelva pronto...\n")
