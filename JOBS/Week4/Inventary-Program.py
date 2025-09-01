@@ -112,7 +112,7 @@ while menu:
         |  3.Calcular valor total                   |
         |  4.Buscar producto                        |
         |  5.Registrar venta                        |
-        |  6.Salir del sistema                      |   
+        |  6.Salir del sistema                      |
         |                                           |
         |___________________________________________|
         """)
