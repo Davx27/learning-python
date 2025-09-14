@@ -91,7 +91,13 @@ def saleRegistrer():
             if not found:
                 print("\n           No se encuentra o digitelo tal cual lo registro...")
  
-            
+
+def findFirstProduct():
+    cantidadElementos = len(products)
+    print(cantidadElementos)
+    
+    print(f"{products[cantidadElementos - 1]}")
+    
 #Variable Section
 products = []
 
@@ -113,6 +119,7 @@ while menu:
         |  4.Buscar producto                        |
         |  5.Registrar venta                        |
         |  6.Salir del sistema                      |
+        |  7.Cuantos productos hay                  |
         |                                           |
         |___________________________________________|
         """)
@@ -138,7 +145,9 @@ while menu:
         case 6:
             print("\n           Vuelva pronto...\n")
             menu = False 
-    
+        case 7:
+            findFirstProduct()
+               
     
     
             
