@@ -1,4 +1,4 @@
-#hacer un programa qye halle el promedio de 10 notas
+#hacer un programa que halle el promedio de 10 notas
 
 def MediaDeNotas(notas):
     return sum(notas) / len(notas)
