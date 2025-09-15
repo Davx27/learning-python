@@ -1,9 +1,7 @@
 #Variable
 students = []
 
-
 #Section fuctions
-
 def register_student():
     add = True
     print("\n            Registrar Estudiante")
@@ -28,7 +26,6 @@ def register_student():
                     print("Nota no valida.\nLas notas son de 0.0 a 5.0")
             except ValueError:
                 print("Argumento no valido!!!")    
-                
                 
         students.append({
             "Nombre": name.title(),
@@ -76,14 +73,6 @@ def calculate_average():
     notes = [student['Nota'] for student in students]
     average = sum(notes) / len(notes)
     print(f"El promedio de notas de los estudiantes: {average} ")
-    
-
-    
-    
-    
-        
-        
-
     
 menu = True
 while menu:
