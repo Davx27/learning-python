@@ -1,18 +1,128 @@
 #Variable
 pets = [
-    {"Nombre": "Arenita",    "Especie": "Perro",      "Edad": 5, "Energia": "Media",     "Compatible con niños": "SI"},  
-    {"Nombre": "Esperanza",  "Especie": "Gato",       "Edad": 6, "Energia": "Media",     "Compatible con niños": "SI"},
-    {"Nombre": "Lupita",     "Especie": "Gato",       "Edad": 4, "Energia": "Baja",      "Compatible con niños": "NO"},
-    {"Nombre": "Hormiguin",  "Especie": "Conejo",     "Edad": 2, "Energia": "Baja",      "Compatible con niños": "SI"},
-    {"Nombre": "Juan",       "Especie": "Perro",      "Edad": 3, "Energia": "Alta",      "Compatible con niños": "NO"},    
-    {"Nombre": "Vaco",       "Especie": "Conejo",     "Edad": 10,"Energia": "Alta",      "Compatible con niños": "NO"},   
-    {"Nombre": "Lecho",      "Especie": "Perro",      "Edad": 4, "Energia": "Alta",      "Compatible con niños": "SI"},
-    {"Nombre": "Saturno",    "Especie": "Conejo",     "Edad": 1, "Energia": "Media",     "Compatible con niños": "SI"},
-    {"Nombre": "Max",        "Especie": "Raton",      "Edad": 3, "Energia": "Media",     "Compatible con niños": "SI"}    
+    {"Nombre": "Arenita",    
+    "Especie": "Perro",      
+    "Edad": 5, 
+    "Energia": "Media",     
+    "Niños": "si"
+    },
+      
+    {"Nombre": "Esperanza",  
+    "Especie": "Gato",       
+    "Edad": 6, 
+    "Energia": "Media",     
+    "Niños": "si"
+    },
+    
+    {"Nombre": "Lupita",     
+    "Especie": "Gato",       
+    "Edad": 4, 
+    "Energia": "Baja",      
+    "Niños": "no"
+    },
+    
+    {"Nombre": "Hormiguin",  
+    "Especie": "Conejo",     
+    "Edad": 2, 
+    "Energia": "Baja",      
+    "Niños": "si"
+    },
+    
+    {"Nombre": "Juan",       
+    "Especie": "Perro",      
+    "Edad": 3, 
+    "Energia": "Alta",      
+    "Niños": "no"
+    },
+        
+    {"Nombre": "Vaco",       
+    "Especie": "Conejo",     
+    "Edad": 10,
+    "Energia": "Alta",      
+    "Niños": "no"
+    },
+       
+    {"Nombre": "Lecho",      
+    "Especie": "Perro",      
+    "Edad": 4, 
+    "Energia": "Alta",      
+    "Niños": "si"
+    },
+    
+    {"Nombre": "Saturno",    
+    "Especie": "Conejo",     
+    "Edad": 1, 
+    "Energia": "Media",     
+    "Niños": "si"
+    },
+    
+    {"Nombre": "Max",        
+    "Especie": "Raton",      
+    "Edad": 3, 
+    "Energia": "Media",     
+    "Niños": "si"
+    }    
 ]
 
-#fuctions
+preference_user = {}
 
+#fuctions
+def filter_pets(preferences):
+    compatible = []
+    for pet in pets:
+        if preferences['Especie'].lower() != "cualquiera":
+            if pet['Especie'].lower() != preferences['Especie'].lower():
+                continue
+            
+        if pet['Edad'] < preferences['Edad_minima']:
+            continue
+        
+        if pet['Edad'] > preferences['Edad_maxima']:
+            continue
+        
+
+        if preferences['Energia'].lower() != "cualquiera":
+       
+            if pet['Energia'].lower() != preferences['Energia'].lower():
+                continue
+        
+        if preferences['Niños'].lower() != "cualquiera":
+            if pet['Niños'].lower() == preferences['Niños'].lower():
+                continue
+            
+    compatible.append(pet)
+        
+    if len(compatible) == 0:
+        print("No se encuentran mascotas disponibles :( ")
+    else:
+        print(compatible)
+    
+    pet_user = input("Digite el nombre de la mascota que desea adoptar: ").lower()
+    for pet in compatible:
+        if pet['Nombre'].lower() == pet_user:
+            print(f"\n{pet}")
+            print("\nTu mascota ya es tuya, cuidala mucho :)\n        Que tengas buen dia...")
+            break
+        
+def pet_preference():
+    species = input("¿Cual especie desea adoptar? (Digite 'cualquiera' si no le importa): ").lower()
+    min_age = int(input("¿Edad minima?: "))
+    max_age = int(input("¿Edad maxima?: "))
+    energia = input("Enrgia, baja, media o alta (Digite 'cualquiera' si no le importa): ").lower()
+    kids = input("¿Tiene niños en casa? (Digite 'cualquiera' si no le importa): ").lower()
+    
+    
+    return {
+    "Especie": species,
+    "Edad_minima": min_age,
+    "Edad_maxima": max_age,
+    "Energia": energia,
+    "Niños": kids
+    }
+    
+
+        
+        
 
 menu = True
 while menu:
@@ -34,9 +144,10 @@ while menu:
         option = int(input("\n         Seleccione una opcion: "))
         match option:
             case 1:
-                None
+                preference_user = pet_preference()
+                filter_pets(preference_user)
             case 2:
-                None
+                print(pets)
             case 3:
                 print(""" 
                     ______________________________________________
