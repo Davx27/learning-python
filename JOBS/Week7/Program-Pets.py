@@ -73,7 +73,9 @@ def filter_pets(preferences):
         if preferences['Especie'].lower() != "cualquiera":
             if pet['Especie'].lower() != preferences['Especie'].lower():
                 continue
-            
+            else:
+                print("No se encontró esa mascota...") # Falta arreglar esto 
+                
         if pet['Edad'] < preferences['Edad_minima']:
             continue
         
@@ -87,22 +89,20 @@ def filter_pets(preferences):
                 continue
         
         if preferences['Niños'].lower() != "cualquiera":
-            if pet['Niños'].lower() == preferences['Niños'].lower():
+            if pet['Niños'].lower() != preferences['Niños'].lower():
                 continue
-            
-    compatible.append(pet)
-        
-    if len(compatible) == 0:
-        print("No se encuentran mascotas disponibles :( ")
-    else:
-        print(compatible)
+        compatible.append(pet)
     
-    pet_user = input("Digite el nombre de la mascota que desea adoptar: ").lower()
+    pet_user = input("Digite el nombre de la mascota que desea adoptar: ").lower()    
     for pet in compatible:
         if pet['Nombre'].lower() == pet_user:
             print(f"\n{pet}")
             print("\nTu mascota ya es tuya, cuidala mucho :)\n        Que tengas buen dia...")
+            pets.remove(pet)
             break
+        
+    else:
+         print("No se encontró esa mascota entre las opciones disponibles.")
         
 def pet_preference():
     species = input("¿Cual especie desea adoptar? (Digite 'cualquiera' si no le importa): ").lower()
