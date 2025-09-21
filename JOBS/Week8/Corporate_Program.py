@@ -2,7 +2,7 @@
 
 staff = [
     {"Nombre": "Alejo",
-     "Desempeño semanal": [9, 7.5, 9],
+     "Desempeño semanal": [9.0, 7.5, 9.0],
      "Estado": "Sobresaliente",
      "Promedio": 8.5
      }
@@ -15,6 +15,11 @@ def average_performance(data):
 
 def register_data_staff():
     name = input("Nombre del empleado: ").title()
+    if any(name == i['Nombre']for i in staff):
+        print("Este nombre ya esta registrado!!!")
+        return
+        
+            
     weeks = []
     state = []
     for i in range(3):
@@ -24,11 +29,11 @@ def register_data_staff():
         
     average = average_performance(weeks)
     if average >= 8.5:
-        state.append("Sobresaliente")
+        state = "Sobresaliente"
     elif 5 <= average < 8.5:
-        state.append("Aceptable")
+        state = "Aceptable"
     elif average < 5:
-        state.append("Bajo")
+        state = "Bajo"
     
     staff.append({
         "Nombre": name,
@@ -46,19 +51,22 @@ def performance_staff():
             print(f"Desempeño por semana: {i['Desempeño semanal']}  |  Promedio del desempeño: {i['Promedio']}  |  Estado: {i['Estado']}")
 
 def list_autstanding():
+    if len(staff) == 0:
+        print("No hay empleados sobre salientes... ")
     for i in staff:
         if i['Promedio'] >= 8.5:
-            print(i)
-        else:
-            print("No hay empleados con un estado sobresaliente")
+            print("\n           Empleados Sobre Salientes")
+            print(f"Nombre: {i['Nombre']} | Desempeño semanal: {i['Desempeño semanal']} | Estado: {i['Estado']} | Promedio: {i['Promedio']} ")
+
+            
             
 def report_staff():
     if len(staff) == 0:
-        for i in staff:
-            print(i)
-    else:
         print("No hay empleados registrados... ")
-
+    else:
+        print("\n       Reporte Final")
+        for i in staff:
+            print(f"Nombre: {i['Nombre']} | Desempeño semanal: {i['Desempeño semanal']} | Estado: {i['Estado']} | Promedio: {i['Promedio']} ")
 
 
 
