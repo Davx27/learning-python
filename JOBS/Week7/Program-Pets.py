@@ -73,8 +73,6 @@ def filter_pets(preferences):
         if preferences['Especie'].lower() != "cualquiera":
             if pet['Especie'].lower() != preferences['Especie'].lower():
                 continue
-            else:
-                print("No se encontró esa mascota...") # Falta arreglar esto 
                 
         if pet['Edad'] < preferences['Edad_minima']:
             continue
@@ -93,17 +91,27 @@ def filter_pets(preferences):
                 continue
         compatible.append(pet)
     
-    pet_user = input("Digite el nombre de la mascota que desea adoptar: ").lower()    
-    for pet in compatible:
-        if pet['Nombre'].lower() == pet_user:
-            print(f"\n{pet}")
-            print("\nTu mascota ya es tuya, cuidala mucho :)\n        Que tengas buen dia...")
-            pets.remove(pet)
-            break
+    if not compatible:
+        print("No se encontraron mascotas disponibles... ")
+        return
+    while True:
+        print("Mascotas disponibles")
+        for pet in compatible:
+            print(f"Nombre: {pet['Nombre']} | Especie: {pet['Especie']} | Edad: {pet['Edad']} | Energia: {pet['Energia']} | Niños: {pet['Niños']}")
+    
+        pet_user = input("Digite el nombre de la mascota que desea adoptar: ").lower()    
+        for pet in compatible:
+            if pet['Nombre'].lower() == pet_user:
+                print(f"\n{pet}")
+                print("\nLa mascota ya es tuya, cuidala mucho :)\n        Que tengas buen dia...")
+                pets.remove(pet)
+                break
+            
+        else:
+            print("No se encontró esa mascota entre las opciones disponibles.")
+            continue
         
-    else:
-         print("No se encontró esa mascota entre las opciones disponibles.")
-        
+        break
 def pet_preference():
     species = input("¿Cual especie desea adoptar? (Digite 'cualquiera' si no le importa): ").lower()
     min_age = int(input("¿Edad minima?: "))
@@ -147,7 +155,9 @@ while menu:
                 preference_user = pet_preference()
                 filter_pets(preference_user)
             case 2:
-                print(pets)
+                for pet in pets:
+                    print(f"Nombre: {pet['Nombre']} | Especie: {pet['Especie']} Edad: {pet['Edad']} | Energia: {pet['Energia']} | Niños: {pet['Niños']}")
+
             case 3:
                 print(""" 
                     ______________________________________________
