@@ -107,9 +107,9 @@ def filter_pets(preferences):
                 pets.remove(pet)
                 break
             
-        else:
-            print("No se encontró esa mascota entre las opciones disponibles.")
-            continue
+            else:
+                print("No se encontró esa mascota entre las opciones disponibles.")
+                continue
         
         break
 def pet_preference():
