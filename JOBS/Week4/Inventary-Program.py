@@ -147,8 +147,7 @@ while menu:
             menu = False 
         case 7:
             findFirstProduct()
-               
+    
     
     
             
-             
